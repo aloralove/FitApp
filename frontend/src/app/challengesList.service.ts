@@ -1,28 +1,51 @@
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 
-import { Observable, of } from 'rxjs';
+const options = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}
 
-import { ChallengesList } from './challengesList';
-import { CHALLENGESLIST } from './mock-challenges';
-import { MessageService } from './message.service';
+type ChallengesList = {
+  id: number
+  name: string
+}
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ 
+  providedIn: 'root' 
+})
 export class ChallengesListService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(private _http: HttpClient) { }
 
-  getChallenges(): Observable<ChallengesList[]> {
-    const challenges = of(CHALLENGESLIST);
-    this.messageService.add('ChallengesListService: fetched challenges');
-    return challenges;
+  createChallengesList(challengesList: ChallengesList) {
+    const url = `http://localhost:3000/challengesList/`
+
+    return this._http.post<ChallengesList>(url, challengesList, options)
   }
 
-  getChallengesList(id: number): Observable<ChallengesList> {
-    // For now, assume that a workouts with the specified `id` always exists.
-    // Error handling will be added in the next step of the tutorial.
-    const challengesList = CHALLENGESLIST.find(c => c.id === id)!;
-    this.messageService.add(`ChallengesListService: fetched challengesList id=${id}`);
-    return of(challengesList);
+  deleteChallengesList(challengesList: ChallengesList) {
+    const url = `http://localhost:3000/challengesList/${challengesList.id}`
+
+    return this._http.delete<number>(url, options)
   }
+
+  getChallengesList(challengesListID: number) {
+    const url = `http://localhost:3000/challengesList/${challengesListID}`
+
+    return this._http.get<ChallengesList>(url, options)
+  }
+
+  getChallengesLists() {
+    const url = `http://localhost:3000/challengesLists/`
+
+    return this._http.get<ChallengesList[]>(url, options)
+  }
+
+  updateChallengesList(challengesList: ChallengesList) {
+    const url = `http://localhost:3000/challengesList/${challengesList.id}`
+
+    return this._http.put<number>(url, challengesList, options)
+  }
+
 
 }

@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   getChallenges(): void {
-    this.challengesListService.getChallenges()
+    this.challengesListService.getChallengesLists()
         .subscribe(challenges => this.challenges = challenges.slice(1, 5));
   }
 
