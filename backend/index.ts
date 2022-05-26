@@ -125,7 +125,7 @@ type ChallengesList = {
 const challengesLists: ChallengesList[] = [
     {
          id: 10,
-        name: '30 days of Cardio' 
+        name: 'BACKEND!!! 30 days of Cardio' 
     },
     { 
         id: 11, 
@@ -216,4 +216,165 @@ async function updateChallengesList(request: Request, response: Response, next: 
     } else {
         response.status(404).send()
     }
+}
+
+
+//nutrition
+type NutritionList = {
+  id: number
+  name: string
+  recipe: string
+}
+
+const nutritionLists: NutritionList[] = [
+  { id: 21, name: 'BACKEND!!! Green Smoothie', recipe: "Green stuff"},
+  { id: 22, name: 'Chicken Burger with Sun-Dried Tomato Aioli', recipe: "Chicken stuff" },
+  { id: 23, name: 'Oatmeal Pancakes With Cinnamon Apples', recipe: "Oatmeal stuff" },
+  { id: 24, name: 'Spicy Grilled Calamari Salad', recipe: "Calamari stuff" },
+  { id: 25, name: 'Crispy Chipotle Shrimp Quesadilla' , recipe: "Chipotle stuff" },
+  { id: 26, name: 'Takeout-Level Chicken Fried Rice' , recipe: "Fried Rice stuff" },
+  { id: 27, name: 'Oatmeal With Peanut Butter and Banana', recipe: "Peanut Butter jelly time stuff" },
+  { id: 28, name: 'Protein Pancakes', recipe: "Pancakes stuff" },
+]
+
+router.post('/nutritionList', createNutritionList)
+router.delete('/nutritionList/:nutritionListID', deleteNutritionList)
+router.get('/nutritionList/:nutritionListID', getNutritionList)
+router.get('/nutritionLists', getNutritionLists)
+router.put('/nutritionList/:nutritionListID', updateNutritionList)
+
+/** List of HTTP response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#information_responses */
+
+async function createNutritionList(request: Request, response: Response, next: NextFunction) {
+  const nutritionList = request.body as NutritionList
+  const randomID = parseInt(crypto.randomUUID())
+
+  nutritionList.id = randomID
+
+  nutritionLists.push(nutritionList)
+
+  response.status(201).json(nutritionList)
+}
+
+async function deleteNutritionList(request: Request, response: Response, next: NextFunction) {
+  const nutritionListID = parseInt(request.params.nutritionListID)
+  const nutritionListIndex = nutritionLists.findIndex(nutritionList => nutritionList.id == nutritionListID)
+
+  if (nutritionListIndex > -1) {
+      nutritionLists.splice(nutritionListIndex, 1)
+
+      response.status(200).send()
+  } else {
+      response.status(404).send()
+  }
+}
+
+async function getNutritionList(request: Request, response: Response, next: NextFunction) {
+  const nutritionListID = parseInt(request.params.nutritionListID)
+  const nutritionList: NutritionList = nutritionLists.find(nutritionList => nutritionList.id == nutritionListID)
+
+  if (nutritionList) {
+      response.status(200).json(nutritionList)
+  } else {
+      response.status(404).send()
+  }
+}
+
+async function getNutritionLists(request: Request, response: Response, next: NextFunction) {
+  response.status(200).json(nutritionLists)
+}
+
+async function updateNutritionList(request: Request, response: Response, next: NextFunction) {
+  const nutritionListID = parseInt(request.params.nutritionListID)
+  const nutritionListIndex = nutritionLists.findIndex(nutritionList => nutritionList.id == nutritionListID)
+  const nutritionList = request.body as NutritionList
+
+  if (nutritionListIndex > -1) {
+      nutritionLists[nutritionListIndex] = nutritionList
+
+      response.status(200).send()
+  } else {
+      response.status(404).send()
+  }
+}
+
+
+
+
+//workouts 
+type Workouts = {
+  id: number
+  name: string
+}
+
+const workoutss: Workouts[] = [
+  { id: 1, name: 'BACKEND!!!!!!! Arms' },
+  { id: 2, name: 'HIIT' },
+  { id: 3, name: 'Legs' },
+  { id: 4, name: 'Fullbody' },
+  { id: 5, name: 'Lowerbody' },
+  { id: 6, name: 'Upperbody' },
+  { id: 7, name: 'Back' },
+  { id: 8, name: 'Yoga' },
+]
+
+router.post('/workouts', createWorkouts)
+router.delete('/workouts/:workoutsID', deleteWorkouts)
+router.get('/workouts/:workoutsID', getWorkouts)
+router.get('/workoutss', getWorkoutss)
+router.put('/workouts/:workoutsID', updateWorkouts)
+
+/** List of HTTP response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#information_responses */
+
+async function createWorkouts(request: Request, response: Response, next: NextFunction) {
+  const workouts = request.body as Workouts
+  const randomID = parseInt(crypto.randomUUID())
+
+  workouts.id = randomID
+
+  workoutss.push(workouts)
+
+  response.status(201).json(workouts)
+}
+
+async function deleteWorkouts(request: Request, response: Response, next: NextFunction) {
+  const workoutsID = parseInt(request.params.workoutsID)
+  const workoutsIndex = workoutss.findIndex(workouts => workouts.id == workoutsID)
+
+  if (workoutsIndex > -1) {
+      workoutss.splice(workoutsIndex, 1)
+
+      response.status(200).send()
+  } else {
+      response.status(404).send()
+  }
+}
+
+async function getWorkouts(request: Request, response: Response, next: NextFunction) {
+  const workoutsID = parseInt(request.params.workoutsID)
+  const workouts: Workouts = workoutss.find(workouts => workouts.id == workoutsID)
+
+  if (workouts) {
+      response.status(200).json(workouts)
+  } else {
+      response.status(404).send()
+  }
+}
+
+async function getWorkoutss(request: Request, response: Response, next: NextFunction) {
+  response.status(200).json(workoutss)
+}
+
+async function updateWorkouts(request: Request, response: Response, next: NextFunction) {
+  const workoutsID = parseInt(request.params.workoutsID)
+  const workoutsIndex = workoutss.findIndex(workouts => workouts.id == workoutsID)
+  const workouts = request.body as Workouts
+
+  if (workoutsIndex > -1) {
+      workoutss[workoutsIndex] = workouts
+
+      response.status(200).send()
+  } else {
+      response.status(404).send()
+  }
 }

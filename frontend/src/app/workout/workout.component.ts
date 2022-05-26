@@ -25,7 +25,7 @@ export class WorkoutComponent implements OnInit {
   }
 
   getWorkout(): void {
-    this.workoutService.getWorkout()
+    this.workoutService.getWorkoutss()
         .subscribe(workout => this.workout = workout);
   }
 

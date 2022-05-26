@@ -1,28 +1,50 @@
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 
-import { Observable, of } from 'rxjs';
-
-import { NutritionList } from './nutritionList';
-import { NUTRITIONLIST } from './mock-nutrition';
-import { MessageService } from './message.service';
-
-@Injectable({ providedIn: 'root' })
-export class NutritionListService {
-
-  constructor(private messageService: MessageService) { }
-
-  getNutrition(): Observable<NutritionList[]> {
-    const nutrition = of(NUTRITIONLIST);
-    this.messageService.add('NutritionListService: fetched nutrition');
-    return nutrition;
-  }
-
-  getNutritionList(id: number): Observable<NutritionList> {
-    // For now, assume that a workouts with the specified `id` always exists.
-    // Error handling will be added in the next step of the tutorial.
-    const nutritionList = NUTRITIONLIST.find(n => n.id === id)!;
-    this.messageService.add(`NutritionListService: fetched nutritionList id=${id}`);
-    return of(nutritionList);
-  }
-
+const options = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
+
+type NutritionList = {
+  id: number
+  name: string
+  recipe: string 
+}
+
+@Injectable({ 
+  providedIn: 'root' 
+})
+export class NutritionListService {
+  
+    constructor(private _http: HttpClient) { }
+  
+    createNutritionList(nutritionList: NutritionList) {
+      const url = `http://localhost:3000/nutritionList/`
+  
+      return this._http.post<NutritionList>(url, nutritionList, options)
+    }
+  
+    deleteNutritionList(nutritionList: NutritionList) {
+      const url = `http://localhost:3000/nutritionList/${nutritionList.id}`
+  
+      return this._http.delete<number>(url, options)
+    }
+  
+    getNutritionList(nutritionListID: number) {
+      const url = `http://localhost:3000/nutritionList/${nutritionListID}`
+  
+      return this._http.get<NutritionList>(url, options)
+    }
+  
+    getNutritionLists() {
+      const url = `http://localhost:3000/nutritionLists/`
+  
+      return this._http.get<NutritionList[]>(url, options)
+    }
+  
+    updateNutritionList(nutritionList: NutritionList) {
+      const url = `http://localhost:3000/nutritionList/${nutritionList.id}`
+  
+      return this._http.put<number>(url, nutritionList, options)
+    }
+  }

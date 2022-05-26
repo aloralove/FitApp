@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   getWorkout(): void {
-    this.workoutService.getWorkout()
+    this.workoutService.getWorkoutss()
       .subscribe(workout => this.workout = workout.slice(1, 5));
   }
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNutrition(): void {
-    this.nurtitionListService.getNutrition()
+    this.nurtitionListService.getNutritionLists()
         .subscribe(nutrition => this.nutrition = nutrition.slice(1, 5));
   }
 

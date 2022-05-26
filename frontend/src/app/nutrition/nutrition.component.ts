@@ -8,6 +8,7 @@ import { NutritionListService } from '../nutritionList.service';
   templateUrl: './nutrition.component.html',
   styleUrls: ['./nutrition.component.css']
 })
+
 export class NutritionComponent implements OnInit {
   nutrition: NutritionList[] = [];
   todaysDate = new Date();
@@ -21,7 +22,7 @@ export class NutritionComponent implements OnInit {
   }
 
   getNutrition(): void {
-    this.nurtitionListService.getNutrition()
+    this.nurtitionListService.getNutritionLists()
         .subscribe(nutrition => this.nutrition = nutrition);
   }
 

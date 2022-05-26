@@ -1,28 +1,48 @@
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 
-import { Observable, of } from 'rxjs';
-
-import { Workouts } from './workouts';
-import { WORKOUTS } from './mock-workouts';
-import { MessageService } from './message.service';
-
-@Injectable({ providedIn: 'root' })
-export class WorkoutService {
-
-  constructor(private messageService: MessageService) { }
-
-  getWorkout(): Observable<Workouts[]> {
-    const workout = of(WORKOUTS);
-    this.messageService.add('WorkoutService: fetched workout');
-    return workout;
-  }
-
-  getWorkouts(id: number): Observable<Workouts> {
-    // For now, assume that a workouts with the specified `id` always exists.
-    // Error handling will be added in the next step of the tutorial.
-    const workouts = WORKOUTS.find(w => w.id === id)!;
-    this.messageService.add(`WorkoutService: fetched workouts id=${id}`);
-    return of(workouts);
-  }
-
+const options = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
+
+type Workouts = {
+  id: number
+  name: string
+}
+
+@Injectable({ 
+  providedIn: 'root' 
+})
+export class WorkoutService {
+  constructor(private _http: HttpClient) { }
+  
+    createWorkouts(workouts: Workouts) {
+      const url = `http://localhost:3000/workouts/`
+  
+      return this._http.post<Workouts>(url, workouts, options)
+    }
+  
+    deleteWorkouts(workouts: Workouts) {
+      const url = `http://localhost:3000/workouts/${workouts.id}`
+  
+      return this._http.delete<number>(url, options)
+    }
+  
+    getWorkouts(workoutsID: number) {
+      const url = `http://localhost:3000/workouts/${workoutsID}`
+  
+      return this._http.get<Workouts>(url, options)
+    }
+  
+    getWorkoutss() {
+      const url = `http://localhost:3000/workoutss/`
+  
+      return this._http.get<Workouts[]>(url, options)
+    }
+  
+    updateWorkouts(workouts: Workouts) {
+      const url = `http://localhost:3000/workouts/${workouts.id}`
+  
+      return this._http.put<number>(url, workouts, options)
+    }
+  }

@@ -5,9 +5,9 @@ h2 {
   }
   
   .workout-menu {
-    padding: 0;
+    padding: 10;
     margin: auto;
-    max-width: 1000px;
+    max-width: 500px;
   
     /* flexbox */
     display: flex;
@@ -19,8 +19,8 @@ h2 {
   }
   
   a {
-    background-color: #1c9de2;
-    border-radius: 12px;
+    background-color: #386474;
+    border-radius: 100px;
     padding: 1rem;
     font-size: 1.2rem;
     text-decoration: none;
@@ -38,7 +38,7 @@ h2 {
     align-self: auto;
   }
   
-  @media (min-width: 600px) {
+  @media (min-width: 60px) {
     a {
       width: 18%;
       box-sizing: content-box;
@@ -46,5 +46,5 @@ h2 {
   }
   
   a:hover {
-    background-color: rgb(78, 232, 240);
+    background-color: rgb(7, 194, 110);
   }
