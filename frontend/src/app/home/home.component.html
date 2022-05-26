@@ -1,0 +1,23 @@
+<h2>Most Energizing Workouts</h2>
+<div class="workout-menu">
+  <a *ngFor="let Workouts of workout"
+    routerLink="/detail/{{Workouts.id}}">
+    {{Workouts.name}}
+  </a>
+</div>
+
+<h2>Top Challenges</h2>
+<div class="workout-menu">
+  <a *ngFor="let ChallengesList of challenges"
+    routerLink="/detail/{{ChallengesList.id}}">
+    {{ChallengesList.name}}
+  </a>
+</div>
+
+<h2>Try These Recipes</h2>
+<div class="workout-menu">
+  <a *ngFor="let NutritionList of nutrition"
+    routerLink="/detail/{{NutritionList.id}}">
+    {{NutritionList.name}}
+  </a>
+</div>

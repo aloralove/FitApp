@@ -1,0 +1,12 @@
+{{todaysDate | date : 'h:mm:ss a'}}
+<p></p>
+{{todaysDate | date : 'EEEE MMMM d, y'}}
+<h2>My Workouts</h2>
+<ul class="Workout">
+  <li *ngFor="let Workouts of workout">
+    
+    <a routerLink="/detail/{{Workouts.id}}">
+      <span class="badge"></span> {{Workouts.name}}
+    </a>
+  </li>
+</ul>
