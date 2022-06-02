@@ -2,11 +2,11 @@
 <p></p>
 {{todaysDate | date : 'EEEE MMMM d, y'}}
 <h2>Healthy Recipes!</h2>
+
 <ul class="Nutrition">
   <li *ngFor="let NutritionList of nutrition">
-    
     <a routerLink="/detail/{{NutritionList.id}}">
-      <span class="badge"></span> {{NutritionList.name}}
+      <span class="badge"></span> {{NutritionList.nu_name}}
     </a>
   </li>
 </ul>

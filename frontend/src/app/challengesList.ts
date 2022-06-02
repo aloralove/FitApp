@@ -1,4 +1,4 @@
 export interface ChallengesList {
     id: number;
-    name: string;
+    ch_name: string;
   }

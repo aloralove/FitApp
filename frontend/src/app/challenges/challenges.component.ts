@@ -16,17 +16,18 @@ export class ChallengesComponent implements OnInit {
   constructor(
     private challengesListService: ChallengesListService,
 
-    
     ) { }
     
     ngOnInit(): void {
-      this.getChallenges();
+      this.getChallengesLists();
     }
   
-    getChallenges(): void {
+    getChallengesLists(): void {
       this.challengesListService.getChallengesLists()
-          .subscribe(challenges => this.challenges = challenges);
+          .subscribe(challenges => {
+              console.log(challenges)
+              this.challenges = challenges
+            });
     }
-  
-  
+
   }

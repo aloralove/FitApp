@@ -7,7 +7,7 @@ const options = {
 
 type Workouts = {
   id: number
-  name: string
+  wo_name: string
 }
 
 @Injectable({ 
@@ -17,9 +17,9 @@ export class WorkoutService {
   constructor(private _http: HttpClient) { }
   
     createWorkouts(workouts: Workouts) {
-      const url = `http://localhost:3000/workouts/`
+      const url = `http://localhost:3000/workoutss/`
   
-      return this._http.post<Workouts>(url, workouts, options)
+      return this._http.post<any>(url, workouts, options)
     }
   
     deleteWorkouts(workouts: Workouts) {
@@ -31,13 +31,13 @@ export class WorkoutService {
     getWorkouts(workoutsID: number) {
       const url = `http://localhost:3000/workouts/${workoutsID}`
   
-      return this._http.get<Workouts>(url, options)
+      return this._http.get<any>(url, options)
     }
   
     getWorkoutss() {
       const url = `http://localhost:3000/workoutss/`
   
-      return this._http.get<Workouts[]>(url, options)
+      return this._http.get<any>(url, options)
     }
   
     updateWorkouts(workouts: Workouts) {

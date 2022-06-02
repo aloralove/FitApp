@@ -4,9 +4,10 @@
 <h2>Challenges</h2>
 <ul class="Challenges">
   <li *ngFor="let ChallengesList of challenges">
-    
     <a routerLink="/detail/{{ChallengesList.id}}">
-      <span class="badge"></span> {{ChallengesList.name}}
+      <span class="badge"></span> {{ ChallengesList.ch_name }}
     </a>
   </li>
 </ul>
+
+

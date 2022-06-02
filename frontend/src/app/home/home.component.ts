@@ -33,17 +33,26 @@ export class HomeComponent implements OnInit {
 
   getWorkout(): void {
     this.workoutService.getWorkoutss()
-      .subscribe(workout => this.workout = workout.slice(1, 5));
+      .subscribe(workout => {
+        console.log(workout)
+        this.workout = workout.slice(1, 5)
+      });
   }
 
   getChallenges(): void {
     this.challengesListService.getChallengesLists()
-        .subscribe(challenges => this.challenges = challenges.slice(1, 5));
+        .subscribe(challenges => {
+          console.log(challenges)
+          this.challenges = challenges.slice(1, 5)
+        });
   }
 
   getNutrition(): void {
     this.nurtitionListService.getNutritionLists()
-        .subscribe(nutrition => this.nutrition = nutrition.slice(1, 5));
+        .subscribe(nutrition => {
+          console.log(nutrition)
+          this.nutrition = nutrition.slice(1, 5)
+        });
   }
 
 }

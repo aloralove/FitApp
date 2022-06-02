@@ -7,7 +7,7 @@ const options = {
 
 type ChallengesList = {
   id: number
-  name: string
+  ch_name: string
 }
 
 @Injectable({ 
@@ -18,31 +18,31 @@ export class ChallengesListService {
   constructor(private _http: HttpClient) { }
 
   createChallengesList(challengesList: ChallengesList) {
-    const url = `http://localhost:3000/challengesList/`
+    const url = `http://localhost:3000/challenges/`
 
-    return this._http.post<ChallengesList>(url, challengesList, options)
+    return this._http.post<any>(url, challengesList, options)
   }
 
   deleteChallengesList(challengesList: ChallengesList) {
-    const url = `http://localhost:3000/challengesList/${challengesList.id}`
+    const url = `http://localhost:3000/challenge/${challengesList.id}`
 
     return this._http.delete<number>(url, options)
   }
 
   getChallengesList(challengesListID: number) {
-    const url = `http://localhost:3000/challengesList/${challengesListID}`
+    const url = `http://localhost:3000/challenge/${challengesListID}`
 
-    return this._http.get<ChallengesList>(url, options)
+    return this._http.get<any>(url, options)
   }
 
   getChallengesLists() {
-    const url = `http://localhost:3000/challengesLists/`
+    const url = `http://localhost:3000/challenges/`
 
-    return this._http.get<ChallengesList[]>(url, options)
+    return this._http.get<any>(url, options)
   }
 
   updateChallengesList(challengesList: ChallengesList) {
-    const url = `http://localhost:3000/challengesList/${challengesList.id}`
+    const url = `http://localhost:3000/challenge/${challengesList.id}`
 
     return this._http.put<number>(url, challengesList, options)
   }

@@ -1,6 +1,16 @@
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import express, { NextFunction, Request, Response } from 'express'
+import Pool from 'pg'
+ 
+const pool = new Pool.Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "fitdb",
+  password: "data123",
+  port: 5432
+})
+
 
 const app = express()
 const router = express.Router()
@@ -115,266 +125,134 @@ async function updateUser(request: Request, response: Response, next: NextFuncti
 }
 
 
-
 //challenges
-type ChallengesList = {
-    id: number
-    name: string
-}
-
-const challengesLists: ChallengesList[] = [
-    {
-         id: 10,
-        name: 'BACKEND!!! 30 days of Cardio' 
-    },
-    { 
-        id: 11, 
-        name: '30 days of Yoga' 
-    },
-    { 
-        id: 12, 
-        name: '30 days of push-ups' 
-    },
-    {
-        id: 13,
-        name: '30 day Bodyweight Challenge' 
-    },
-    {
-        id: 14,
-        name: 'Plank Challenge' 
-    },
-    {
-        id: 15, 
-        name: 'Squat Challenge' 
-    },
-    { 
-        id: 16, 
-        name: 'Jiggle FREE July Challenge' 
-    },
-    {
-        id: 17, 
-        name: '75 Day Challenge' 
-    },
-]
-
-router.post('/challengesList', createChallengesList)
-router.delete('/challengesList/:challengesListID', deleteChallengesList)
-router.get('/challengesList/:challengesListID', getChallengesList)
-router.get('/challengesLists', getChallengesLists)
-router.put('/challengesList/:challengesListID', updateChallengesList)
-
-/** List of HTTP response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#information_responses */
-
+router.post('/challenges', createChallengesList)
+router.delete('/challenge/:challengeID', deleteChallengesList)
+router.get('/challenge/:challengeID', getChallengesList)
+router.get('/challenges', getChallengesLists)
+router.put('/challenge/:challengeID', updateChallengesList)
+ 
 async function createChallengesList(request: Request, response: Response, next: NextFunction) {
-    const challengesList = request.body as ChallengesList
-    const randomID = parseInt(crypto.randomUUID())
-
-    challengesList.id = randomID
-
-    challengesLists.push(challengesList)
-
-    response.status(201).json(challengesList)
+  pool.query('SELECT * FROM challenges;', []).then(
+    query => response.status(200).json(query.rows)
+  )
 }
 
 async function deleteChallengesList(request: Request, response: Response, next: NextFunction) {
-    const challengesListID = parseInt(request.params.challengesListID)
-    const challengesListIndex = challengesLists.findIndex(challengesList => challengesList.id == challengesListID)
-
-    if (challengesListIndex > -1) {
-        challengesLists.splice(challengesListIndex, 1)
-
-        response.status(200).send()
-    } else {
-        response.status(404).send()
-    }
+  const challengeID = parseInt(request.params.challengeID)
+ 
+  pool.query('DELETE FROM challenges WHERE id = $1;', [challengeID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
 
 async function getChallengesList(request: Request, response: Response, next: NextFunction) {
-    const challengesListID = parseInt(request.params.challengesListID)
-    const challengesList: ChallengesList = challengesLists.find(challengesList => challengesList.id == challengesListID)
-
-    if (challengesList) {
-        response.status(200).json(challengesList)
-    } else {
-        response.status(404).send()
-    }
+  const challengeID = parseInt(request.params.challengeID)
+ 
+  pool.query('SELECT * FROM challenges WHERE id = $1;', [challengeID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
-
+ 
 async function getChallengesLists(request: Request, response: Response, next: NextFunction) {
-    response.status(200).json(challengesLists)
+  pool.query('SELECT * FROM challenges;', []).then(
+    query => response.status(200).json(query.rows)
+  )
 }
 
 async function updateChallengesList(request: Request, response: Response, next: NextFunction) {
-    const challengesListID = parseInt(request.params.challengesListID)
-    const challengesListIndex = challengesLists.findIndex(challengesList => challengesList.id == challengesListID)
-    const challengesList = request.body as ChallengesList
-
-    if (challengesListIndex > -1) {
-        challengesLists[challengesListIndex] = challengesList
-
-        response.status(200).send()
-    } else {
-        response.status(404).send()
-    }
+  const challengeID = parseInt(request.params.challengeID)
+ 
+  pool.query('UPDATE challenges WHERE id = $1;', [challengeID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
-
 
 //nutrition
-type NutritionList = {
-  id: number
-  name: string
-  recipe: string
-}
+router.post('/nutritions', createNutritionList)
+router.delete('/nutrition/:nutritionID', deleteNutritionList)
+router.get('/nutrition/:nutritionID', getNutritionList)
+router.get('/nutritions', getNutritionLists)
+router.put('/nutrition/:nutritionID', updateNutritionList)
 
-const nutritionLists: NutritionList[] = [
-  { id: 21, name: 'BACKEND!!! Green Smoothie', recipe: "Green stuff"},
-  { id: 22, name: 'Chicken Burger with Sun-Dried Tomato Aioli', recipe: "Chicken stuff" },
-  { id: 23, name: 'Oatmeal Pancakes With Cinnamon Apples', recipe: "Oatmeal stuff" },
-  { id: 24, name: 'Spicy Grilled Calamari Salad', recipe: "Calamari stuff" },
-  { id: 25, name: 'Crispy Chipotle Shrimp Quesadilla' , recipe: "Chipotle stuff" },
-  { id: 26, name: 'Takeout-Level Chicken Fried Rice' , recipe: "Fried Rice stuff" },
-  { id: 27, name: 'Oatmeal With Peanut Butter and Banana', recipe: "Peanut Butter jelly time stuff" },
-  { id: 28, name: 'Protein Pancakes', recipe: "Pancakes stuff" },
-]
-
-router.post('/nutritionList', createNutritionList)
-router.delete('/nutritionList/:nutritionListID', deleteNutritionList)
-router.get('/nutritionList/:nutritionListID', getNutritionList)
-router.get('/nutritionLists', getNutritionLists)
-router.put('/nutritionList/:nutritionListID', updateNutritionList)
-
-/** List of HTTP response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#information_responses */
 
 async function createNutritionList(request: Request, response: Response, next: NextFunction) {
-  const nutritionList = request.body as NutritionList
-  const randomID = parseInt(crypto.randomUUID())
-
-  nutritionList.id = randomID
-
-  nutritionLists.push(nutritionList)
-
-  response.status(201).json(nutritionList)
+  pool.query('SELECT * FROM nutritions;', []).then(
+    query => response.status(200).json(query.rows)
+  )
 }
 
 async function deleteNutritionList(request: Request, response: Response, next: NextFunction) {
-  const nutritionListID = parseInt(request.params.nutritionListID)
-  const nutritionListIndex = nutritionLists.findIndex(nutritionList => nutritionList.id == nutritionListID)
-
-  if (nutritionListIndex > -1) {
-      nutritionLists.splice(nutritionListIndex, 1)
-
-      response.status(200).send()
-  } else {
-      response.status(404).send()
-  }
+  const nutritionID = parseInt(request.params.nutritionID)
+ 
+  pool.query('DELETE FROM nutritions WHERE id = $1;', [nutritionID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
 
 async function getNutritionList(request: Request, response: Response, next: NextFunction) {
-  const nutritionListID = parseInt(request.params.nutritionListID)
-  const nutritionList: NutritionList = nutritionLists.find(nutritionList => nutritionList.id == nutritionListID)
-
-  if (nutritionList) {
-      response.status(200).json(nutritionList)
-  } else {
-      response.status(404).send()
-  }
+  const nutritionID = parseInt(request.params.nutritionID)
+ 
+  pool.query('SELECT * FROM nutritions WHERE id = $1;', [nutritionID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
 
 async function getNutritionLists(request: Request, response: Response, next: NextFunction) {
-  response.status(200).json(nutritionLists)
+  pool.query('SELECT * FROM nutritions;', []).then(
+    query => response.status(200).json(query.rows)
+  )
 }
 
 async function updateNutritionList(request: Request, response: Response, next: NextFunction) {
-  const nutritionListID = parseInt(request.params.nutritionListID)
-  const nutritionListIndex = nutritionLists.findIndex(nutritionList => nutritionList.id == nutritionListID)
-  const nutritionList = request.body as NutritionList
-
-  if (nutritionListIndex > -1) {
-      nutritionLists[nutritionListIndex] = nutritionList
-
-      response.status(200).send()
-  } else {
-      response.status(404).send()
-  }
+  const nutritionID = parseInt(request.params.nutritionID)
+ 
+  pool.query('UPDATE nutritions WHERE id = $1;', [nutritionID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
-
-
 
 
 //workouts 
-type Workouts = {
-  id: number
-  name: string
-}
-
-const workoutss: Workouts[] = [
-  { id: 1, name: 'BACKEND!!!!!!! Arms' },
-  { id: 2, name: 'HIIT' },
-  { id: 3, name: 'Legs' },
-  { id: 4, name: 'Fullbody' },
-  { id: 5, name: 'Lowerbody' },
-  { id: 6, name: 'Upperbody' },
-  { id: 7, name: 'Back' },
-  { id: 8, name: 'Yoga' },
-]
-
-router.post('/workouts', createWorkouts)
+router.post('/workoutss', createWorkouts)
 router.delete('/workouts/:workoutsID', deleteWorkouts)
 router.get('/workouts/:workoutsID', getWorkouts)
 router.get('/workoutss', getWorkoutss)
 router.put('/workouts/:workoutsID', updateWorkouts)
 
-/** List of HTTP response status codes https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#information_responses */
 
 async function createWorkouts(request: Request, response: Response, next: NextFunction) {
-  const workouts = request.body as Workouts
-  const randomID = parseInt(crypto.randomUUID())
-
-  workouts.id = randomID
-
-  workoutss.push(workouts)
-
-  response.status(201).json(workouts)
+  pool.query('SELECT * FROM workoutss;', []).then(
+    query => response.status(200).json(query.rows)
+  )
 }
 
 async function deleteWorkouts(request: Request, response: Response, next: NextFunction) {
   const workoutsID = parseInt(request.params.workoutsID)
-  const workoutsIndex = workoutss.findIndex(workouts => workouts.id == workoutsID)
-
-  if (workoutsIndex > -1) {
-      workoutss.splice(workoutsIndex, 1)
-
-      response.status(200).send()
-  } else {
-      response.status(404).send()
-  }
+ 
+  pool.query('DELETE FROM workoutss WHERE id = $1;', [workoutsID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
 
 async function getWorkouts(request: Request, response: Response, next: NextFunction) {
   const workoutsID = parseInt(request.params.workoutsID)
-  const workouts: Workouts = workoutss.find(workouts => workouts.id == workoutsID)
-
-  if (workouts) {
-      response.status(200).json(workouts)
-  } else {
-      response.status(404).send()
-  }
+ 
+  pool.query('SELECT * FROM workoutss WHERE id = $1;', [workoutsID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }
 
 async function getWorkoutss(request: Request, response: Response, next: NextFunction) {
-  response.status(200).json(workoutss)
+  pool.query('SELECT * FROM workoutss;', []).then(
+    query => response.status(200).json(query.rows)
+  )
 }
 
 async function updateWorkouts(request: Request, response: Response, next: NextFunction) {
   const workoutsID = parseInt(request.params.workoutsID)
-  const workoutsIndex = workoutss.findIndex(workouts => workouts.id == workoutsID)
-  const workouts = request.body as Workouts
-
-  if (workoutsIndex > -1) {
-      workoutss[workoutsIndex] = workouts
-
-      response.status(200).send()
-  } else {
-      response.status(404).send()
-  }
+ 
+  pool.query('UPDATE workoutss WHERE id = $1;', [workoutsID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
 }

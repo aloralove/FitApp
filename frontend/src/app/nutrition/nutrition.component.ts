@@ -23,8 +23,10 @@ export class NutritionComponent implements OnInit {
 
   getNutrition(): void {
     this.nurtitionListService.getNutritionLists()
-        .subscribe(nutrition => this.nutrition = nutrition);
+        .subscribe(nutrition => {
+          console.log(nutrition)
+          this.nutrition = nutrition
+        });
   }
-
 
 }

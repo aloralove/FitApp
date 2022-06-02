@@ -1,0 +1,15 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tables": "psql -U postgres -d fitdb -f create_tables.sql",
+    "functions": "psql -U postgres -d fitdb -f create_functions.sql",
+    "data": "psql -U postgres -d fitdb -f create_mock_data.sql"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,4 +1,4 @@
 export interface Workouts {
     id: number;
-    name: string;
+    wo_name: string;
   }
