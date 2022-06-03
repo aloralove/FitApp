@@ -1,12 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Workouts } from '../workouts';
 import { WorkoutService } from '../workouts.service';
-import { ChallengesList } from '../challengesList';
-import { ChallengesListService } from '../challengesList.service';
-import { NutritionList } from '../nutritionList';
-import { NutritionListService } from '../nutritionList.service';
+import { Detail } from '../detail';
+import { DetailService } from '../detail.service';
 
 @Component({
   selector: 'app-workout-detail',
@@ -16,40 +14,34 @@ import { NutritionListService } from '../nutritionList.service';
 
 export class WorkoutDetailComponent implements OnInit {
   
-  workouts: Workouts | undefined;
-  challengesList: ChallengesList | undefined;
-  nutritionList: NutritionList | undefined;
+  detail: Detail[] = [];
+  workout: Workouts[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private workoutService: WorkoutService,
-    private challengesListService: ChallengesListService,
-    private nutritionListService: NutritionListService
+    private detailService: DetailService,
+    private workoutService: WorkoutService
   ) { }
 
   ngOnInit(): void {
-    this.getWorkouts();
-    this.getNutritionList();
-    this.getChallengesList();
+    this.getWorkout();
+    this.getDetails();
   }
 
-  getWorkouts(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.workoutService.getWorkouts(id)
-      .subscribe(workouts => this.workouts = workouts);
+  getDetails(): void {
+    this.detailService.getDetails()
+      .subscribe(detail => {
+        this.detail = detail
+      });
   }
 
-  getNutritionList(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.nutritionListService.getNutritionList(id)
-      .subscribe(nutritionList => this.nutritionList = nutritionList);
-  }
-
-  getChallengesList(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.challengesListService.getChallengesList(id)
-      .subscribe(challengesList => this.challengesList = challengesList);
+  getWorkout(): void {
+    this.workoutService.getWorkoutss()
+        .subscribe(workout => {
+          console.log(workout)
+          this.workout = workout
+        });
   }
 
   goBack(): void {

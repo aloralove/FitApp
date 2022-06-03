@@ -256,3 +256,48 @@ async function updateWorkouts(request: Request, response: Response, next: NextFu
     query => response.status(200).json(query.rows[0])
   )
 }
+
+
+//workout details
+router.post('/details', createDetail)
+router.delete('/detail/:detailID', deleteDetail)
+router.get('/detail/:detailID', getDetail)
+router.get('/details', getDetails)
+router.put('/detail/:detailID', updateDetail)
+
+
+async function createDetail(request: Request, response: Response, next: NextFunction) {
+  pool.query('SELECT * FROM details;', []).then(
+    query => response.status(200).json(query.rows)
+  )
+}
+
+async function deleteDetail(request: Request, response: Response, next: NextFunction) {
+  const detailID = parseInt(request.params.detailID)
+ 
+  pool.query('DELETE FROM details WHERE id = $1;', [detailID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
+}
+
+async function getDetail(request: Request, response: Response, next: NextFunction) {
+  const detailID = parseInt(request.params.detailID)
+ 
+  pool.query('SELECT * FROM details WHERE id = $1;', [detailID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
+}
+
+async function getDetails(request: Request, response: Response, next: NextFunction) {
+  pool.query('SELECT * FROM details;', []).then(
+    query => response.status(200).json(query.rows)
+  )
+}
+
+async function updateDetail(request: Request, response: Response, next: NextFunction) {
+  const detailID = parseInt(request.params.detailID)
+ 
+  pool.query('UPDATE details WHERE id = $1;', [detailID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
+}

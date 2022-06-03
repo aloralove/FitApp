@@ -1,14 +1,15 @@
 -- Takes in 3 parameters and returns an array containing the challenge you created
 CREATE OR REPLACE FUNCTION create_challenge(
-    ch_name challenges.ch_name%type
+    ch_name challenges.ch_name%type,
+    descript challenges.descript%type
 ) RETURNS SETOF challenges AS $$
  
 DECLARE
 challenge_id challenges.id%type;
  
 BEGIN
-INSERT INTO challenges (ch_name)
-VALUES (ch_name)
+INSERT INTO challenges (ch_name, descript)
+VALUES (ch_name, descript)
 RETURNING id INTO challenge_id;
  
 RETURN QUERY
@@ -21,15 +22,16 @@ $$ LANGUAGE 'plpgsql';
 
 -- Takes in 3 parameters and returns an array containing the nutrition you created
 CREATE OR REPLACE FUNCTION create_nutrition(
-    nu_name nutritions.nu_name%type
+    nu_name nutritions.nu_name%type,
+    recipe challenges.descript%type
 ) RETURNS SETOF nutritions AS $$
  
 DECLARE
 nutrition_id nutritions.id%type;
  
 BEGIN
-INSERT INTO nutritions (nu_name)
-VALUES (nu_name)
+INSERT INTO nutritions (nu_name, recipe)
+VALUES (nu_name, recipe)
 RETURNING id INTO nutrition_id;
  
 RETURN QUERY
@@ -46,17 +48,42 @@ CREATE OR REPLACE FUNCTION create_workouts(
 ) RETURNS SETOF workoutss AS $$
  
 DECLARE
-workouts_id workoutss.id%type;
+workid workoutss.id%type;
  
 BEGIN
 INSERT INTO workoutss (wo_name)
 VALUES (wo_name)
-RETURNING id INTO workouts_id;
+RETURNING id INTO workid;
  
 RETURN QUERY
 SELECT *
 FROM workoutss
-WHERE workoutss.id = workouts_id;
+WHERE workoutss.id = workid;
 END;
  
 $$ LANGUAGE 'plpgsql';
+
+
+
+
+CREATE OR REPLACE FUNCTION create_detail (
+    uid permissions.workouts_id%type,
+    ttl details.title%type,
+    dsc details.content%type) 
+    RETURNS details.id%type AS $$
+ 
+DECLARE
+    detid details.id%type;
+ 
+BEGIN
+    INSERT INTO details (title, content)
+    VALUES (ttl, dsc)
+    RETURNING id INTO detid;
+
+    INSERT INTO permissions (workouts_id, detail_id, permission) 
+    VALUES (uid, detid, 'Owner');
+
+    RETURN detid;
+END;
+$$
+LANGUAGE 'plpgsql';

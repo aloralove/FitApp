@@ -16,6 +16,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NutritionComponent } from './nutrition/nutrition.component';
 import { ChallengesComponent } from './challenges/challenges.component';
+import { DetailchallengeComponent } from './detailchallenge/detailchallenge.component';
+import { DetailnutritionComponent } from './detailnutrition/detailnutrition.component';
 
 @NgModule({
 
@@ -27,7 +29,9 @@ import { ChallengesComponent } from './challenges/challenges.component';
     MessagesComponent,
     CalendarComponent,
     NutritionComponent,
-    ChallengesComponent
+    ChallengesComponent,
+    DetailchallengeComponent,
+    DetailnutritionComponent
   ],
   imports: [
     BrowserModule,

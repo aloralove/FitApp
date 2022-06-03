@@ -1,15 +1,11 @@
-<div *ngIf="workouts">
-    <h2>{{workouts.wo_name}} Workouts</h2>
-    <!--div>{{workouts.id}}</div-->
+
+<div *ngIf="workout">
+    <ul class="Workout">
+        <li *ngFor="let Workouts of workout"> 
+            <li *ngFor="let detail of detail">
+                <h2> {{ detail.title }}</h2>
+        </li>
+    </ul>
 </div>
 
-<div *ngIf="challengesList">
-    <h2>{{challengesList.ch_name}}</h2>
-    <!--div>{{challengesList.id}}</div-->
-</div>
-
-<div *ngIf="nutritionList">
-    <h2>{{nutritionList.nu_name}}</h2>
-    <!--div>{{nutritionList.id}}</div-->
-</div>
     <button type="button" (click)="goBack()">go back</button>

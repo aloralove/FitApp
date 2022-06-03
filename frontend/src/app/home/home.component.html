@@ -9,7 +9,7 @@
 <h2>Top Challenges</h2>
 <div class="workout-menu">
   <a *ngFor="let ChallengesList of challenges"
-    routerLink="/detail/{{ChallengesList.id}}">
+    routerLink="/detailchallenge/{{ChallengesList.id}}">
     {{ChallengesList.ch_name}}
   </a>
 </div>
@@ -17,7 +17,7 @@
 <h2>Try These Recipes</h2>
 <div class="workout-menu">
   <a *ngFor="let NutritionList of nutrition"
-    routerLink="/detail/{{NutritionList.id}}">
+    routerLink="/detailnutrition/{{NutritionList.id}}">
     {{NutritionList.nu_name}}
   </a>
 </div>
