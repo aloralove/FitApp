@@ -12,7 +12,7 @@ import { WorkoutService } from '../workouts.service';
 
 export class WorkoutComponent implements OnInit {
   workout: Workouts[] = [];
-  todaysDate = new Date();
+
 
   constructor(
     private workoutService: WorkoutService,

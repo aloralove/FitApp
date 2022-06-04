@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.workoutService.getWorkoutss()
       .subscribe(workout => {
         console.log(workout)
-        this.workout = workout.slice(1, 5)
+        this.workout = workout.slice(1, 4)
       });
   }
 
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.challengesListService.getChallengesLists()
         .subscribe(challenges => {
           console.log(challenges)
-          this.challenges = challenges.slice(1, 5)
+          this.challenges = challenges.slice(1, 4)
         });
   }
 
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     this.nurtitionListService.getNutritionLists()
         .subscribe(nutrition => {
           console.log(nutrition)
-          this.nutrition = nutrition.slice(1, 5)
+          this.nutrition = nutrition.slice(1, 4)
         });
   }
 

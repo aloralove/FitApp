@@ -1,23 +1,24 @@
-<h2>Most Energizing Workouts</h2>
-<div class="workout-menu">
-  <a *ngFor="let Workouts of workout"
+
+<h2>Energizing Workouts</h2>
+<div class="d-grid gap-2 col-8 mx-auto">
+  <button type="button" class="btn btn-light" type="button" *ngFor="let Workouts of workout"
     routerLink="/detail/{{Workouts.id}}">
     {{Workouts.wo_name}}
-  </a>
+  </button>
 </div>
 
 <h2>Top Challenges</h2>
-<div class="workout-menu">
-  <a *ngFor="let ChallengesList of challenges"
+<div class="d-grid gap-2 col-8 mx-auto">
+  <button type="button" class="btn btn-light" type="button" *ngFor="let ChallengesList of challenges"
     routerLink="/detailchallenge/{{ChallengesList.id}}">
     {{ChallengesList.ch_name}}
-  </a>
+  </button>
 </div>
 
-<h2>Try These Recipes</h2>
-<div class="workout-menu">
-  <a *ngFor="let NutritionList of nutrition"
+<h2>Healthy Recipes</h2>
+<div class="d-grid gap-2 col-8 mx-auto">
+  <button type="button" class="btn btn-light" type="button" *ngFor="let NutritionList of nutrition"
     routerLink="/detailnutrition/{{NutritionList.id}}">
     {{NutritionList.nu_name}}
-  </a>
+  </button>
 </div>

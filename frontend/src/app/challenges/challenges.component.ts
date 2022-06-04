@@ -11,7 +11,7 @@ import { ChallengesListService } from '../challengesList.service';
 
 export class ChallengesComponent implements OnInit {
   challenges: ChallengesList[] = [];
-  todaysDate = new Date();
+
 
   constructor(
     private challengesListService: ChallengesListService,

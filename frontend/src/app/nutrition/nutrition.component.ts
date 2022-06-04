@@ -11,7 +11,7 @@ import { NutritionListService } from '../nutritionList.service';
 
 export class NutritionComponent implements OnInit {
   nutrition: NutritionList[] = [];
-  todaysDate = new Date();
+
 
   constructor(
     private nurtitionListService: NutritionListService,

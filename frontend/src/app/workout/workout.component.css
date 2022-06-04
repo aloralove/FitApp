@@ -1,4 +1,28 @@
 /* workoutsComponent's private CSS styles */
+
+
+h2 {
+  padding-bottom: 0px;
+  padding-top: 0px;
+  text-shadow: 2px 2px 5px rgb(251, 248, 248);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: xx-large;
+  text-align: center;
+  color: #fff;
+}
+
+button {
+  color: rgb(0, 0, 86);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: large;
+}
+button:hover {
+  background-color: rgb(58, 61, 99);
+}
+
+
+
+
 .workouts {
     margin: 0 0 2em 0;
     list-style-type: none;

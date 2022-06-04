@@ -1,0 +1,14 @@
+p {
+    font-size: small;
+    text-align: center;
+    color: #fff;
+  }
+a {
+    color: rgb(0, 0, 86);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+  }
+a:hover {
+    background-color: rgb(214, 137, 137);
+  }
+

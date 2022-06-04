@@ -1,11 +1,8 @@
-{{todaysDate | date : 'h:mm:ss a'}}
-<p></p>
-{{todaysDate | date : 'EEEE MMMM d, y'}}
+
 <h2>My Workouts</h2>
-<ul class="Workout">
-  <li *ngFor="let Workouts of workout">  
-    <a routerLink="/detail/{{Workouts.id}}">
+<div class="d-grid gap-2 col-8 mx-auto">
+  <button type="button" class="btn btn-light" type="button" *ngFor="let Workouts of workout"  
+    routerLink="/detail/{{Workouts.id}}">
       <span class="badge"></span> {{Workouts.wo_name}}
-    </a>
-  </li>
-</ul>
+</button>
+</div>

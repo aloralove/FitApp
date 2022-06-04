@@ -1,21 +1,23 @@
 
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a routerLink="/home" class="btn btn-success active" role="button" data-bs-toggle="button" aria-pressed="true">Get Fit!</a>
+    <a routerLink="/home" class="btn btn-secondary active" role="button" data-bs-toggle="button" aria-pressed="true">Get Fit!</a>
   </li>
   <li class="nav-item">
-    <a routerLink="/workout" class="btn btn-success active" role="button" data-bs-toggle="button" aria-pressed="true">Workouts</a>
+    <a routerLink="/workout" class="btn btn-secondary active" role="button" data-bs-toggle="button" aria-pressed="true">Workouts</a>
   </li>
   <li class="nav-item">
-    <a routerLink="/challenges" class="btn btn-success active" role="button" data-bs-toggle="button" aria-pressed="true">Challenges</a>
+    <a routerLink="/challenges" class="btn btn-secondary active" role="button" data-bs-toggle="button" aria-pressed="true">Challenges</a>
   </li>
   <li class="nav-item">
-    <a routerLink="/nutrition" class="btn btn-success active" role="button" data-bs-toggle="button" aria-pressed="true">Nutrition</a>
+    <a routerLink="/nutrition" class="btn btn-secondary active" role="button" data-bs-toggle="button" aria-pressed="true">Nutrition</a>
   </li>
   <li class="nav-item">
-    <a routerLink="/calendar" class="btn btn-success active" role="button" data-bs-toggle="button" aria-pressed="true">Calendar</a>
+    <a routerLink="/calendar" class="btn btn-secondary active" role="button" data-bs-toggle="button" aria-pressed="true">Calendar</a>
   </li>
 </ul>
-
+<p>{{todaysDate | date : 'h:mm:ss a'}}
+  {{todaysDate | date : 'EEEE MMMM d, y'}}</p>
+  
 <router-outlet></router-outlet>
 <app-messages></app-messages>

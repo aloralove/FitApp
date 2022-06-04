@@ -1,13 +1,10 @@
-{{todaysDate | date : 'h:mm:ss a'}}
-<p></p>
-{{todaysDate | date : 'EEEE MMMM d, y'}}
+
 <h2>Challenges</h2>
-<ul class="Challenges">
-  <li *ngFor="let ChallengesList of challenges">
-    <a routerLink="/detailchallenge/{{ChallengesList.id}}">
+<div class="d-grid gap-2 col-8 mx-auto">
+  <button type="button" class="btn btn-light" type="button" *ngFor="let ChallengesList of challenges"
+     routerLink="/detailchallenge/{{ChallengesList.id}}">
       <span class="badge"></span> {{ ChallengesList.ch_name }}
-    </a>
-  </li>
-</ul>
+  </button>
+</div>
 
 

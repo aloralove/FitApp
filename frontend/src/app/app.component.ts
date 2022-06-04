@@ -10,6 +10,7 @@ import { UserService } from './user.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  todaysDate = new Date();
   title = 'Get in shape!';
 
   constructor( ) {
