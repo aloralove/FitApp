@@ -1,4 +1,4 @@
--- Takes in 3 parameters and returns an array containing the challenge you created
+-- Takes in #? parameters and returns an array containing the challenge you created
 CREATE OR REPLACE FUNCTION create_challenge(
     ch_name challenges.ch_name%type,
     descript challenges.descript%type
@@ -20,7 +20,7 @@ END;
  
 $$ LANGUAGE 'plpgsql';
 
--- Takes in 3 parameters and returns an array containing the nutrition you created
+-- Takes in #? parameters and returns an array containing the nutrition you created
 CREATE OR REPLACE FUNCTION create_nutrition(
     nu_name nutritions.nu_name%type,
     recipe challenges.descript%type
@@ -42,7 +42,7 @@ END;
  
 $$ LANGUAGE 'plpgsql';
 
--- Takes in 3 parameters and returns an array containing the workouts you created
+-- Takes in #? parameters and returns an array containing the workouts you created
 CREATE OR REPLACE FUNCTION create_workouts(
     wo_name workoutss.wo_name%type
 ) RETURNS SETOF workoutss AS $$
@@ -64,7 +64,7 @@ END;
 $$ LANGUAGE 'plpgsql';
 
 
-
+--assoc table for details to workouts one to many relationship
 
 CREATE OR REPLACE FUNCTION create_detail (
     uid permissions.workouts_id%type,
@@ -80,10 +80,25 @@ BEGIN
     VALUES (ttl, dsc)
     RETURNING id INTO detid;
 
-    INSERT INTO permissions (workouts_id, detail_id, permission) 
-    VALUES (uid, detid, 'Owner');
+    INSERT INTO permissions (workouts_id, detail_id) 
+    VALUES (uid, detid);
 
     RETURN detid;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION create_permission (
+    uid permissions.workouts_id%type,
+    detid permissions.detail_id%type) 
+    
+    RETURNS void AS $$
+ 
+BEGIN
+    INSERT INTO permissions(workouts_id, detail_id)
+    VALUES (uid, detid);
+
 END;
 $$
 LANGUAGE 'plpgsql';
