@@ -8,14 +8,14 @@ AS $$
 DECLARE
 
 -- Bunch of variables ...
-uid1 workoutss.id%TYPE;
-uid2 workoutss.id%TYPE;
-uid3 workoutss.id%TYPE;
-uid4 workoutss.id%TYPE;
-uid5 workoutss.id%TYPE;
-uid6 workoutss.id%TYPE;
-uid7 workoutss.id%TYPE;
-uid8 workoutss.id%TYPE;
+uid1 workouts.id%TYPE;
+uid2 workouts.id%TYPE;
+uid3 workouts.id%TYPE;
+uid4 workouts.id%TYPE;
+uid5 workouts.id%TYPE;
+uid6 workouts.id%TYPE;
+uid7 workouts.id%TYPE;
+uid8 workouts.id%TYPE;
 
 detid1 details.id%TYPE;
 detid2 details.id%TYPE;
@@ -29,14 +29,14 @@ detid8 details.id%TYPE;
 BEGIN
 
 -- Bunch of queries ...
-SELECT * FROM create_workouts('Arms') INTO uid1;
-SELECT * FROM create_workouts('HIIT') INTO uid2;
-SELECT * FROM create_workouts('Legs') INTO uid3;
-SELECT * FROM create_workouts('Fullbody') INTO uid4;
-SELECT * FROM create_workouts('Lowerbody') INTO uid5;
-SELECT * FROM create_workouts('Upperbody') INTO uid6;
-SELECT * FROM create_workouts('Back') INTO uid7;
-SELECT * FROM create_workouts('Yoga') INTO uid8;
+SELECT * FROM create_workout('Arms') INTO uid1;
+SELECT * FROM create_workout('HIIT') INTO uid2;
+SELECT * FROM create_workout('Legs') INTO uid3;
+SELECT * FROM create_workout('Fullbody') INTO uid4;
+SELECT * FROM create_workout('Lowerbody') INTO uid5;
+SELECT * FROM create_workout('Upperbody') INTO uid6;
+SELECT * FROM create_workout('Back') INTO uid7;
+SELECT * FROM create_workout('Yoga') INTO uid8;
 
 
 

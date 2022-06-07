@@ -1,6 +1,6 @@
-import { Workouts } from './workouts';
+import { Workout } from './workout';
 
-export const WORKOUTS: Workouts[] = [
+export const WORKOUTS: Workout[] = [
   { id: 1, name: 'Arms' },
   { id: 2, name: 'HIIT' },
   { id: 3, name: 'Legs' },

@@ -12,8 +12,8 @@ CREATE TABLE nutritions (
     recipe VARCHAR (255) NOT NULL
 );
 
-DROP TABLE IF EXISTS workoutss CASCADE;
-CREATE TABLE workoutss (
+DROP TABLE IF EXISTS workouts CASCADE;
+CREATE TABLE workouts (
     id bigserial PRIMARY KEY,
     wo_name VARCHAR (255) NOT NULL
 );
@@ -27,8 +27,8 @@ CREATE TABLE details (
 
 DROP TABLE IF EXISTS permissions CASCADE;
 CREATE TABLE permissions (
-  workouts_id bigserial NOT NULL REFERENCES workoutss (id),
+  workout_id bigserial NOT NULL REFERENCES workouts (id),
   detail_id bigserial NOT NULL REFERENCES details (id) ON DELETE CASCADE,
   
-  PRIMARY KEY (workouts_id, detail_id)
+  PRIMARY KEY (workout_id, detail_id)
 );

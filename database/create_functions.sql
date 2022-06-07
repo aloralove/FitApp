@@ -42,32 +42,32 @@ END;
  
 $$ LANGUAGE 'plpgsql';
 
--- Takes in #? parameters and returns an array containing the workouts you created
-CREATE OR REPLACE FUNCTION create_workouts(
-    wo_name workoutss.wo_name%type
-) RETURNS SETOF workoutss AS $$
+-- Takes in #? parameters and returns an array containing the workout you created
+CREATE OR REPLACE FUNCTION create_workout(
+    wo_name workouts.wo_name%type
+) RETURNS SETOF workouts AS $$
  
 DECLARE
-workid workoutss.id%type;
+workid workouts.id%type;
  
 BEGIN
-INSERT INTO workoutss (wo_name)
+INSERT INTO workouts (wo_name)
 VALUES (wo_name)
 RETURNING id INTO workid;
  
 RETURN QUERY
 SELECT *
-FROM workoutss
-WHERE workoutss.id = workid;
+FROM workouts
+WHERE workouts.id = workid;
 END;
  
 $$ LANGUAGE 'plpgsql';
 
 
---assoc table for details to workouts one to many relationship
+--assoc table for details to workout one to many relationship
 
 CREATE OR REPLACE FUNCTION create_detail (
-    uid permissions.workouts_id%type,
+    uid permissions.workout_id%type,
     ttl details.title%type,
     dsc details.content%type) 
     RETURNS details.id%type AS $$
@@ -80,7 +80,7 @@ BEGIN
     VALUES (ttl, dsc)
     RETURNING id INTO detid;
 
-    INSERT INTO permissions (workouts_id, detail_id) 
+    INSERT INTO permissions (workout_id, detail_id) 
     VALUES (uid, detid);
 
     RETURN detid;
@@ -90,13 +90,13 @@ LANGUAGE 'plpgsql';
 
 
 CREATE OR REPLACE FUNCTION create_permission (
-    uid permissions.workouts_id%type,
+    uid permissions.workout_id%type,
     detid permissions.detail_id%type) 
     
     RETURNS void AS $$
  
 BEGIN
-    INSERT INTO permissions(workouts_id, detail_id)
+    INSERT INTO permissions(workout_id, detail_id)
     VALUES (uid, detid);
 
 END;

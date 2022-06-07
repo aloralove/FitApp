@@ -1,35 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Workouts } from '../workouts';
-import { WorkoutService } from '../workouts.service';
-
+import { Workout } from '../workout';
+import { WorkoutService } from '../workout.service';
+import { Detail } from '../detail';
+import { DetailService } from '../detail.service';
 
 @Component({
-  selector: 'app-workout',
+  selector: 'app-workouts',
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.css']
 })
 
 export class WorkoutComponent implements OnInit {
-  workout: Workouts[] = [];
+  detail: Detail[] = [];
+  workout: Workout[] = [];
+  route: any;
 
 
   constructor(
     private workoutService: WorkoutService,
+    private detailService: DetailService
 
     
     ) { }
 
   ngOnInit(): void {
     this.getWorkout();
+    this.getDetails();
   }
 
   getWorkout(): void {
-    this.workoutService.getWorkoutss()
+    this.workoutService.getWorkouts()
         .subscribe(workout => {
           console.log(workout)
           this.workout = workout
         });
+  }
+
+  getDetails(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.detailService.getDetails()
+      .subscribe(detail => {
+        this.detail = detail
+      });
   }
 
 

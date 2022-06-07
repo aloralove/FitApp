@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarView } from 'angular-calendar';
 
-import { Workouts } from '../workouts';
-import { WorkoutService } from '../workouts.service';
+import { Workout } from '../workout';
+import { WorkoutService } from '../workout.service';
 
 @Component({
   selector: 'app-calendar',

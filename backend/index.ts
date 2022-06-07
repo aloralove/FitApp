@@ -213,46 +213,46 @@ async function updateNutritionList(request: Request, response: Response, next: N
 }
 
 
-//workouts 
-router.post('/workoutss', createWorkouts)
-router.delete('/workouts/:workoutsID', deleteWorkouts)
-router.get('/workouts/:workoutsID', getWorkouts)
-router.get('/workoutss', getWorkoutss)
-router.put('/workouts/:workoutsID', updateWorkouts)
+//workout 
+router.post('/workouts', createWorkout)
+router.delete('/workout/:workoutID', deleteWorkout)
+router.get('/workout/:workoutID', getWorkout)
+router.get('/workouts', getWorkouts)
+router.put('/workout/:workoutID', updateWorkout)
 
 
-async function createWorkouts(request: Request, response: Response, next: NextFunction) {
-  pool.query('SELECT * FROM workoutss;', []).then(
+async function createWorkout(request: Request, response: Response, next: NextFunction) {
+  pool.query('SELECT * FROM workouts;', []).then(
     query => response.status(200).json(query.rows)
   )
 }
 
-async function deleteWorkouts(request: Request, response: Response, next: NextFunction) {
-  const workoutsID = parseInt(request.params.workoutsID)
+async function deleteWorkout(request: Request, response: Response, next: NextFunction) {
+  const workoutID = parseInt(request.params.workoutID)
  
-  pool.query('DELETE FROM workoutss WHERE id = $1;', [workoutsID]).then(
+  pool.query('DELETE FROM workouts WHERE id = $1;', [workoutID]).then(
+    query => response.status(200).json(query.rows[0])
+  )
+}
+
+async function getWorkout(request: Request, response: Response, next: NextFunction) {
+  const workoutID = parseInt(request.params.workoutID)
+ 
+  pool.query('SELECT * FROM workouts WHERE id = $1;', [workoutID]).then(
     query => response.status(200).json(query.rows[0])
   )
 }
 
 async function getWorkouts(request: Request, response: Response, next: NextFunction) {
-  const workoutsID = parseInt(request.params.workoutsID)
- 
-  pool.query('SELECT * FROM workoutss WHERE id = $1;', [workoutsID]).then(
-    query => response.status(200).json(query.rows[0])
-  )
-}
-
-async function getWorkoutss(request: Request, response: Response, next: NextFunction) {
-  pool.query('SELECT * FROM workoutss;', []).then(
+  pool.query('SELECT * FROM workouts;', []).then(
     query => response.status(200).json(query.rows)
   )
 }
 
-async function updateWorkouts(request: Request, response: Response, next: NextFunction) {
-  const workoutsID = parseInt(request.params.workoutsID)
+async function updateWorkout(request: Request, response: Response, next: NextFunction) {
+  const workoutID = parseInt(request.params.workoutID)
  
-  pool.query('UPDATE workoutss WHERE id = $1;', [workoutsID]).then(
+  pool.query('UPDATE workouts WHERE id = $1;', [workoutID]).then(
     query => response.status(200).json(query.rows[0])
   )
 }

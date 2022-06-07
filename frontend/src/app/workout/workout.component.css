@@ -1,4 +1,4 @@
-/* workoutsComponent's private CSS styles */
+/* workoutComponent's private CSS styles */
 
 
 h2 {
@@ -23,22 +23,22 @@ button:hover {
 
 
 
-.workouts {
+.workout {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
     width: 15em;
   }
-  .workouts li {
+  .workout li {
     position: relative;
     cursor: pointer;
   }
   
-  .workouts li:hover {
+  .workout li:hover {
     left: .1em;
   }
   
-  .workouts a {
+  .workout a {
     color: #333;
     text-decoration: none;
     background-color: #EEE;
@@ -50,17 +50,17 @@ button:hover {
     width: 100%;
   }
   
-  .workouts a:hover {
+  .workout a:hover {
     color: #2c3a41;
     background-color: #e6e6e6;
   }
   
-  .workouts a:active {
+  .workout a:active {
     background-color: #525252;
     color: #fafafa;
   }
   
-  .workouts .badge {
+  .workout .badge {
     display: inline-block;
     font-size: small;
     color: white;

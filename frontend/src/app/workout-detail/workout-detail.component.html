@@ -1,11 +1,7 @@
+<div *ngIf="detail">
+    <p>{{detail.content}}</p>
 
-<div *ngIf="workout">
-    <ul class="Workout">
-        <li *ngFor="let Workouts of workout"> 
-            <li *ngFor="let detail of detail">
-                <h2> {{ detail.title }}</h2>
-        </li>
-    </ul>
 </div>
+<button type="button" (click)="goBack()">go back</button>
 
-    <button type="button" (click)="goBack()">go back</button>
+

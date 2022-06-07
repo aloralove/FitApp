@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Workouts } from '../workouts';
-import { WorkoutService } from '../workouts.service';
+import { Workout } from '../workout';
+import { WorkoutService } from '../workout.service';
 import { ChallengesList } from '../challengesList';
 import { ChallengesListService } from '../challengesList.service';
 import { NutritionList } from '../nutritionList';
@@ -15,7 +15,7 @@ import { NutritionListService } from '../nutritionList.service';
 
 export class HomeComponent implements OnInit {
 
-  workout: Workouts[] = [];
+  workout: Workout[] = [];
   challenges: ChallengesList[] = [];
   nutrition: NutritionList[] = [];
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   getWorkout(): void {
-    this.workoutService.getWorkoutss()
+    this.workoutService.getWorkouts()
       .subscribe(workout => {
         console.log(workout)
         this.workout = workout.slice(1, 4)
