@@ -24,15 +24,16 @@ $$ LANGUAGE 'plpgsql';
 -- Takes in #? parameters and returns an array containing the nutrition you created
 CREATE OR REPLACE FUNCTION create_nutrition(
     nu_name nutritions.nu_name%type,
-    recipe challenges.descript%type
+    recipe challenges.descript%type,
+    img challenges.img%type
 ) RETURNS SETOF nutritions AS $$
  
 DECLARE
 nutrition_id nutritions.id%type;
  
 BEGIN
-INSERT INTO nutritions (nu_name, recipe)
-VALUES (nu_name, recipe)
+INSERT INTO nutritions (nu_name, recipe, img)
+VALUES (nu_name, recipe, img)
 RETURNING id INTO nutrition_id;
  
 RETURN QUERY

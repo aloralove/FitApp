@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS nutritions CASCADE;
 CREATE TABLE nutritions (
     id bigserial PRIMARY KEY,
     nu_name VARCHAR (255) NOT NULL,
-    recipe VARCHAR (789) NOT NULL
+    recipe VARCHAR (789) NOT NULL,
+    img VARCHAR (789) NOT NULL
 );
 
 DROP TABLE IF EXISTS workouts CASCADE;

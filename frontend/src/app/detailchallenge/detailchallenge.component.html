@@ -1,8 +1,9 @@
 
-<div *ngIf="challengesList">
-    <p>{{challengesList.descript}}</p>
-    <p><img id="imageid" src={{challengesList.img}}></p>
-
+<div class="container-lg">
+    <div *ngIf="challengesList">
+        <p>{{challengesList.descript}}</p>
+        <h2><img id="imageid" src={{challengesList.img}}></h2>
+        <button type="button" (click)="goBack()">go back</button>
+    </div>
 </div>
-<button type="button" (click)="goBack()">go back</button>
 

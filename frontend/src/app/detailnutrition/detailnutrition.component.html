@@ -1,6 +1,18 @@
-<p>detailnutrition works!</p>
-<div *ngIf="nutritionList">
-    <h2>{{nutritionList.recipe}}</h2>
-    <!--div>{{nutritionList.id}}</div-->
-</div>
+
+<div class="container-sm">
+    <div *ngIf="nutritionList">
+    <div class="container-sm">
+        <div class="row align-items-start">
+          <div class="col">
+            <h2>{{nutritionList.nu_name}}</h2>
+            <img id="imageid" src={{nutritionList.img}}>
+          </div>
+          <div class="col">
+            <p>{{nutritionList.recipe}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button type="button" (click)="goBack()">go back</button>
+</div>

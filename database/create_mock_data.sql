@@ -296,13 +296,23 @@ SELECT * FROM create_challenge('Core Challenge',
     'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mh-sept-moves-triptych-1567798465.png?resize=480:*');
 
 SELECT * FROM create_challenge('75 Day Challenge', 
-    'Do two 45 minute workouts each day for 75 day. Drink a gallon of water a day. No eating fast food.',
-    'https://png.pngitem.com/pimgs/s/273-2733604_girl-hd-png-download.png');
+    'Challenge yourself with this intense challenge.',
+    'https://s3.amazonaws.com/zenplannerwordpress-stack0/wp-content/uploads/sites/88/2021/12/22191753/b26986d76e36f06ee51e81567311d5da-400x534.jpg');
 
 
 
 
 ---- nutrition data
+SELECT * FROM create_nutrition('Avoid restrictive diets', 
+    'Overly restrictive diets actually lower 
+    your metabolic rate, or the amount of calories you burn, making it more difficult to lose weight. At the same time, 
+    they also cause alterations to your hunger and satiety hormones, which make you hungrier and may cause strong food 
+    cravings for foods high in fat, calories, and sugar. All of this is a recipe 
+    for rebound weight gain, or “yoyo” dieting. Instead of dieting, try adopting a healthier lifestyle. Focus on 
+    nourishing your body instead of depriving it. Weight loss should follow as you transition to whole, nutritious 
+    foods — which are naturally more filling while containing fewer calories than processed foods.',
+    'https://www.golfdigest.com/content/dam/images/golfdigest/fullset/2018/12/20/5c1bc3c57369027d014d8169_Screen%20Shot%202018-12-20%20at%2011.24.11%20AM.png');
+
 SELECT * FROM create_nutrition('Limit sugary drinks', 
     'Sugary drinks like sodas, fruit juices, and sweetened teas are the primary source of added sugar
      in the American diet. Unfortunately, findings from several studies point to 
@@ -311,21 +321,24 @@ SELECT * FROM create_nutrition('Limit sugary drinks',
      harmful for children, as they can contribute not only to obesity in children but also to conditions 
      that usually do not develop until adulthood, like type 2 diabetes, high blood pressure, and non-alcoholic 
      fatty liver disease. Healthier alternatives include: water, 
-     unsweetened teas, sparkling water, coffee');
+     unsweetened teas, sparkling water, coffee',
+     'https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2013/09/HBEO-stoplight-poster.png');
 
 SELECT * FROM create_nutrition('Eat nuts and seeds', 
     'Some people avoid nuts because they are high in fat. However, nuts and seeds are incredibly nutritious. 
     They are packed with protein, fiber, and a variety of vitamins and minerals. Nuts may help you lose weight 
     and reduce the risk of developing type 2 diabetes and heart disease. Additionally, one 
     large observational study noted that a low intake of nuts and seeds was potentially linked to an increased 
-    risk of death from heart disease, stroke, or type 2 diabetes.');
+    risk of death from heart disease, stroke, or type 2 diabetes.',
+    'https://www.smallfootprintfamily.com/wp-content/uploads/why-soak-nuts-and-seeds.jpg');
 
 SELECT * FROM create_nutrition('Avoid ultra-processed foods', 
     'Ultra-processed foods are foods containing ingredients that are significantly modified from their original 
     form. They often contain additives like added sugar, highly refined oil, salt, preservatives, artificial 
     sweeteners, colors, and flavors as well. Examples include: snack cakes, fast food, frozen meals, canned foods, 
     chips Ultra-processed foods are highly palatable, meaning they are easily overeaten, and activate reward-related 
-    regions in the brain, which can lead to excess calorie consumption and weight gain.');
+    regions in the brain, which can lead to excess calorie consumption and weight gain.',
+    'https://m3.healio.com/~/media/slack-news/stock-images/fm_im/f/foods_high_in_fats_shutterstock.jpg');
 
 SELECT * FROM create_nutrition('Don’t fear coffee', 
     'Despite some controversy over it, coffee is loaded with health benefits. It’s rich in antioxidants, 
@@ -334,27 +347,25 @@ SELECT * FROM create_nutrition('Don’t fear coffee',
     be 3–4 cups per day. However, it’s best to consume coffee and any caffeine-based items in 
     moderation. Excessive caffeine intake may lead to health issues like insomnia and heart palpitations. 
     To enjoy coffee in a safe and healthy way, keep your intake to less than 4 cups per day and 
-    avoid high-calorie, high-sugar additives like sweetened creamer.');
+    avoid high-calorie, high-sugar additives like sweetened creamer.',
+    'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_33/2203981/171026-better-coffee-boost-se-329p.jpg');
 
-SELECT * FROM create_nutrition('Eat fatty fish', 
-    'Fish is a great source of high-quality protein and healthy fat. This is particularly true of fatty 
-    fish, such as salmon, which is loaded with anti-inflammatory omega-3 fatty acids and various 
-    other nutrients. Studies show that people who eat fish regularly have a lower risk for several 
-    conditions, including heart disease, dementia, and inflammatory bowel disease.');
 
 SELECT * FROM create_nutrition('Get enough sleep', 
     'The importance of getting enough quality sleep cannot be overstated. Poor sleep can drive insulin 
     resistance, can disrupt your appetite hormones, and reduce your physical and
     mental performance. What’s more, poor sleep is one of the strongest individual risk factors for
     weight gain and obesity. People who do not get enough sleep tend to make food choices that are higher 
-    in fat, sugar, and calories, potentially leading to unwanted weight gain.');
+    in fat, sugar, and calories, potentially leading to unwanted weight gain.',
+    'https://ichef.bbci.co.uk/images/ic/976xn/p073m5wk.jpg');
 
 SELECT * FROM create_nutrition('Stay hydrated', 
     'Hydration is an important and often overlooked marker of health. Staying hydrated helps 
     ensure that your body is functioning optimally and that your blood volume is sufficient. 
     Drinking water is the best way to stay hydrated, as it’s free of calories, sugar, and additives. 
     Although there’s no set amount that everyone needs per day, aim to drink enough so that your 
-    thirst is adequately quenched.');
+    thirst is adequately quenched.',
+    'https://nmcdn.io/bf48b01813174d27941cb0fe2037c1cb/ca6058d658674136865598a6f70df855/files/gear/personal-record/hydrate-hydrate-hydrate/Hydrate-01-process-s660x855.png');
 
 SELECT * FROM create_nutrition('Take vitamin D if you’re deficient', 
     'Most people do not get enough vitamin D. While these widespread vitamin D inadequacies are not 
@@ -362,4 +373,5 @@ SELECT * FROM create_nutrition('Take vitamin D if you’re deficient',
     improving bone strength, reducing symptoms of depression, strengthening your immune system, and 
     lowering your risk for cancer. If you do not spend a lot of time in the sunlight, your vitamin D 
     levels may be low. If you have access, it’s a great idea to have your levels tested, so that you 
-    can correct your levels through vitamin D supplementation if necessary.');
+    can correct your levels through vitamin D supplementation if necessary.',
+    'https://www.calmclinic.com/storage/images/253/qp1au4/main/w1600.png');
