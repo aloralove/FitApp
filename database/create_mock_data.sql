@@ -268,28 +268,36 @@ CALL create_mock_data ();
 
 ----- challenge data
 SELECT * FROM create_challenge('30 days of Cardio', 
-    'For 30 days do at least 45 minutes of cardio. You can choose the type of cardio. Biking, running, walking, jumping jacks...');
+    'For 30 days do at least 45 minutes of cardio. You can choose the type of cardio. Biking, running, walking, jumping jacks...',
+    'https://previews.123rf.com/images/viyada123rf/viyada123rf1712/viyada123rf171200052/91375938-cartoon-female-doing-cardio-exercise-vector-illustrations.jpg');
 
 SELECT * FROM create_challenge('30 days of Yoga', 
-    'For 30 days do at least 30 minutes of yoga. You can either do moves on your own or follow any yoga videos online. Try youtube!');
+    'For 30 days do at least 30 minutes of yoga. You can either do moves on your own or follow any yoga videos online. Try youtube!',
+    'https://images.squarespace-cdn.com/content/v1/55a17f33e4b04a349094f48e/1584388396787-0CJDM06BUAQ7BEAJAVUP/10+Minute+Workout.png');
 
 SELECT * FROM create_challenge('30 days of push-ups', 
-    'On day one start as many push-ups you are comfortable with and add 1-5 push-ups to that number each day for 30 days. ');
+    'On day one start as many push-ups you are comfortable with and add 1-5 push-ups to that number each day for 30 days.',
+    'https://www.fitliferegime.com/wp-content/uploads/2021/08/Plank-to-Pushup.jpg');
 
 SELECT * FROM create_challenge('30 day Bodyweight Challenge', 
-    'For 30 days do at least 30 minutes of a bodyweight strength training workout.');
+    'For 30 days do at least 30 minutes of a bodyweight strength training workout.',
+    'https://i.etsystatic.com/17586370/r/il/ae8d95/3008252972/il_340x270.3008252972_s0hq.jpg');
 
 SELECT * FROM create_challenge('Plank Challenge', 
-    'On day one do a one mintue plank and increase 15 seconds each day for 30 days.');
+    'On day one do a one mintue plank and increase 15 seconds each day for 30 days.',
+    'https://media.istockphoto.com/vectors/woman-doing-plank-exercise-on-blue-mat-with-stopclock-symbol-over-her-vector-id1204463032?k=20&m=1204463032&s=612x612&w=0&h=2nQ9TtrA-sp4GUoPVc-pcqZGfH3w308dPnjJSsNRaOk=');
 
 SELECT * FROM create_challenge('Wall sit Challenge', 
-    'On day one wall sit for 30 seconds and increase by 15 seconds each day for 30 days.');
+    'On day one wall sit for 30 seconds and increase by 15 seconds each day for 30 days.',
+    'https://i.ytimg.com/vi/xD42HFEchp0/maxresdefault.jpg');
 
 SELECT * FROM create_challenge('Core Challenge', 
-    'For 30 days do 3 core moves 15 reps each. Each move can be different as long as it works the core.');
+    'For 30 days do 3 core moves 15 reps each. Each move can be different as long as it works the core.',
+    'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mh-sept-moves-triptych-1567798465.png?resize=480:*');
 
 SELECT * FROM create_challenge('75 Day Challenge', 
-    'Do two 45 minute workouts each day for 75 day. Drink a gallon of water a day. No eating fast food.');
+    'Do two 45 minute workouts each day for 75 day. Drink a gallon of water a day. No eating fast food.',
+    'https://png.pngitem.com/pimgs/s/273-2733604_girl-hd-png-download.png');
 
 
 

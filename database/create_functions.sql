@@ -1,15 +1,16 @@
 -- Takes in #? parameters and returns an array containing the challenge you created
 CREATE OR REPLACE FUNCTION create_challenge(
     ch_name challenges.ch_name%type,
-    descript challenges.descript%type
+    descript challenges.descript%type,
+    img challenges.img%type
 ) RETURNS SETOF challenges AS $$
  
 DECLARE
 challenge_id challenges.id%type;
  
 BEGIN
-INSERT INTO challenges (ch_name, descript)
-VALUES (ch_name, descript)
+INSERT INTO challenges (ch_name, descript, img)
+VALUES (ch_name, descript, img)
 RETURNING id INTO challenge_id;
  
 RETURN QUERY

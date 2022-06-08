@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS challenges CASCADE;
 CREATE TABLE challenges (
     id bigserial PRIMARY KEY,
     ch_name VARCHAR (255) NOT NULL,
-    descript VARCHAR (789) NOT NULL
+    descript VARCHAR (789) NOT NULL,
+    img VARCHAR (789) NOT NULL
 );
 
 DROP TABLE IF EXISTS nutritions CASCADE;

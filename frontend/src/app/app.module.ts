@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { WorkoutComponent } from './workout/workout.component';
-import { WorkoutDetailComponent } from './workout-detail/workout-detail.component';
+import { WorkoutDetailComponent } from './detailworkout/detailworkout.component';
 import { MessagesComponent } from './messages/messages.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NutritionComponent } from './nutrition/nutrition.component';

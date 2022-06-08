@@ -8,8 +8,8 @@ import { DetailService } from '../detail.service';
 
 @Component({
   selector: 'app-workouts-detail',
-  templateUrl: './workout-detail.component.html',
-  styleUrls: ['./workout-detail.component.css']
+  templateUrl: './detailworkout.component.html',
+  styleUrls: ['./detailworkout.component.css']
 })
 
 export class WorkoutDetailComponent implements OnInit {

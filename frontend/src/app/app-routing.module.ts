@@ -6,7 +6,7 @@ import { WorkoutComponent } from './workout/workout.component';import { Calendar
 import { ChallengesComponent } from './challenges/challenges.component';
 import { NutritionComponent } from './nutrition/nutrition.component';
 
-import { WorkoutDetailComponent } from './workout-detail/workout-detail.component';
+import { WorkoutDetailComponent } from './detailworkout/detailworkout.component';
 import { DetailchallengeComponent } from './detailchallenge/detailchallenge.component';
 import { DetailnutritionComponent } from './detailnutrition/detailnutrition.component';
 

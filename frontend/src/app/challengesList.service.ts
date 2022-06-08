@@ -8,6 +8,7 @@ const options = {
 type ChallengesList = {
   id: number
   ch_name: string
+  img: string
 }
 
 @Injectable({ 
