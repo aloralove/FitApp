@@ -1,7 +1,7 @@
 
 <h2>My Workout</h2>
 <div class="d-grid gap-2 col-8 mx-auto">
-  <button type="button" class="btn btn-light" type="button" *ngFor="let Workout of workout"  
+  <button type="button" class="btn btn-light" type="button" *ngFor="let Workout of workouts"  
     routerLink="/detail/{{Workout.id}}">
       <span class="badge"></span> {{Workout.wo_name}}
 </button>

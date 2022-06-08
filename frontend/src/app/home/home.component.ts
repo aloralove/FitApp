@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     private workoutService: WorkoutService,
     private challengesListService: ChallengesListService,
     private nurtitionListService: NutritionListService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.getWorkout();
@@ -41,18 +41,18 @@ export class HomeComponent implements OnInit {
 
   getChallenges(): void {
     this.challengesListService.getChallengesLists()
-        .subscribe(challenges => {
-          console.log(challenges)
-          this.challenges = challenges.slice(1, 4)
-        });
+      .subscribe(challenges => {
+        console.log(challenges)
+        this.challenges = challenges.slice(1, 4)
+      });
   }
 
   getNutrition(): void {
     this.nurtitionListService.getNutritionLists()
-        .subscribe(nutrition => {
-          console.log(nutrition)
-          this.nutrition = nutrition.slice(1, 4)
-        });
+      .subscribe(nutrition => {
+        console.log(nutrition)
+        this.nutrition = nutrition.slice(1, 4)
+      });
   }
 
 }

@@ -13,7 +13,7 @@ import { DetailService } from '../detail.service';
 
 export class WorkoutComponent implements OnInit {
   detail: Detail[] = [];
-  workout: Workout[] = [];
+  workouts: Workout[] = [];
   route: any;
 
 
@@ -33,7 +33,7 @@ export class WorkoutComponent implements OnInit {
     this.workoutService.getWorkouts()
         .subscribe(workout => {
           console.log(workout)
-          this.workout = workout
+          this.workouts = workout
         });
   }
 

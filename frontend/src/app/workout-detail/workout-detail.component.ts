@@ -14,8 +14,8 @@ import { DetailService } from '../detail.service';
 
 export class WorkoutDetailComponent implements OnInit {
   
-  detail: Detail | undefined;
-  workout: Workout[] = [];
+
+  workout: Workout;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,23 +26,16 @@ export class WorkoutDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWorkouts();
-    this.getDetails();
+
   }
 
-  getDetails(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.detailService.getDetails()
-      .subscribe(detail => {
-        console.log(detail)
-        this.detail = detail
-      });
-  }
 
   getWorkouts(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.workoutService.getWorkouts()
-        .subscribe(workout => {
-          console.log(workout)
-          this.workout = workout
+        .subscribe(workouts => {
+          console.log(workouts)
+          this.workout = workouts.find(workout => workout.id == id)
         });
   }
 

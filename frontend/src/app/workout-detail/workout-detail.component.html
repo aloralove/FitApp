@@ -1,7 +1,18 @@
-<div *ngIf="detail">
-    <p>{{detail.content}}</p>
 
+
+<div class="container-sm">
+    <div *ngFor="let detail of workout?.details">
+    <div class="container-sm">
+        <div class="row align-items-start">
+          <div class="col">
+            <h2>{{detail.title}}</h2>
+          </div>
+          <div class="col">
+            <p>{{detail.content}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" (click)="goBack()">go back</button>
 </div>
-<button type="button" (click)="goBack()">go back</button>
-
-

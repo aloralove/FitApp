@@ -1,6 +1,6 @@
 /* WorkoutDetailComponent's private CSS styles */
 label {
-    color: #435960;
+    color: #f1f5f7;
     font-weight: bold;
   }
   input {
@@ -8,8 +8,9 @@ label {
     padding: .5rem;
   }
   button {
+    color: rgb(235, 224, 224);
     margin-top: 20px;
-    background-color: #eee;
+    background-color: rgb(99, 92, 92);
     padding: 1rem;
     border-radius: 4px;
     font-size: 1rem;
@@ -21,4 +22,30 @@ label {
     background-color: #eee;
     color: #ccc;
     cursor: auto;
+  }
+  body {
+    padding: 2rem;
+  }
+  
+  h2 {
+    background-color: rgb(46, 59, 59);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-shadow: 2px 2px 5px rgb(251, 248, 248);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+    text-align: center;
+    color: #fff;
+  }
+
+  p { 
+    background-color: rgb(112, 119, 119);
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-align: left;
+    color: #fff;
   }

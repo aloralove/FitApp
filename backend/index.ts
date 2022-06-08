@@ -217,7 +217,7 @@ async function updateNutritionList(request: Request, response: Response, next: N
 router.post('/workouts', createWorkout)
 router.delete('/workout/:workoutID', deleteWorkout)
 router.get('/workout/:workoutID', getWorkout)
-router.get('/workouts', getWorkouts)
+router.get('/workouts', getWorkoutDetails)
 router.put('/workout/:workoutID', updateWorkout)
 
 
@@ -257,6 +257,18 @@ async function updateWorkout(request: Request, response: Response, next: NextFun
   )
 }
 
+async function getWorkoutDetails(request: Request, response: Response, next: NextFunction) {
+  const query = 
+  `SELECT workouts.*, json_agg(details) as details
+  FROM workouts
+  INNER JOIN permissions on permissions.workout_id = workouts.id
+  INNER JOIN details on permissions.detail_id = details.id
+  GROUP BY workouts.id;`
+
+  pool.query(query).then(
+    query => response.status(200).json(query.rows)
+  )
+}
 
 //workout details
 router.post('/details', createDetail)

@@ -2,14 +2,14 @@ DROP TABLE IF EXISTS challenges CASCADE;
 CREATE TABLE challenges (
     id bigserial PRIMARY KEY,
     ch_name VARCHAR (255) NOT NULL,
-    descript VARCHAR (255) NOT NULL
+    descript VARCHAR (789) NOT NULL
 );
 
 DROP TABLE IF EXISTS nutritions CASCADE;
 CREATE TABLE nutritions (
     id bigserial PRIMARY KEY,
     nu_name VARCHAR (255) NOT NULL,
-    recipe VARCHAR (255) NOT NULL
+    recipe VARCHAR (789) NOT NULL
 );
 
 DROP TABLE IF EXISTS workouts CASCADE;
@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS details CASCADE;
 CREATE TABLE details (
   id bigserial PRIMARY KEY,
   title VARCHAR (255) NOT NULL,
-  content VARCHAR (255) NOT NULL
+  content VARCHAR (789) NOT NULL
 );
 
 DROP TABLE IF EXISTS permissions CASCADE;
