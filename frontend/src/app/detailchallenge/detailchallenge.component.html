@@ -1,9 +1,18 @@
 
-<div class="container-lg">
+<div class="container-sm">
     <div *ngIf="challengesList">
-        <p>{{challengesList.descript}}</p>
-        <h2><img id="imageid" src={{challengesList.img}}></h2>
-        <button type="button" (click)="goBack()">go back</button>
+    <div class="container-sm">
+        <div class="row align-items-start">
+          <div class="col">
+            <h2>{{challengesList.ch_name}}</h2>
+          </div>
+          <div class="col">
+            <p>{{challengesList.descript}}</p>
+            <img id="imageid" src={{challengesList.img}}>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
+    <button type="button" (click)="goBack()">go back</button>
+</div>
