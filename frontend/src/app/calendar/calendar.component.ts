@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarView } from 'angular-calendar';
+import { CalendarEvent, CalendarView } from 'angular-calendar';
+import startOfDay from 'date-fns/startOfDay';
+import startOfWeek from 'date-fns/startOfWeek/index.js';
 
 import { Workout } from '../workout';
 import { WorkoutService } from '../workout.service';
@@ -21,12 +23,20 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-setView(view: CalendarView) {
-  this.view = view;
-}
-
-
-
+  setView(view: CalendarView) {
+    this.view = view;
+  }
+  events: CalendarEvent[] = [
+    {
+      start: startOfDay(new Date()),
+      title: 'Work',
+      allDay: true,
+      
+    },
+    {
+      start: startOfWeek(new Date()),
+      title: 'Fun',
+    }
+  ]
 
 }
